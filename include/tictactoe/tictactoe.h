@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 namespace tictactoe {
 
@@ -36,10 +37,60 @@ class Board {
   /**
    * Evaluates the state of the board.
    */
-  BoardState EvaluateBoard() const;
+  BoardState EvaluateBoard();
 
  private:
-  /// TODO: add your helper functions and member variables here
+ std::vector< std::vector< char > > arrayBoard;
+ int dimension;
+ int pOneWins;
+ int pTwoWins;
+ char playerOne;
+ char playerTwo;
+
+  /**
+    * Evaluates a win through a given row and increments win count for that player
+    * @param boardArray 2D array of tic tac toe board
+    * @param row which row is being evaluated
+    * @param player 'x' or 'o'
+    */
+ void EvaluateRow(int row, char player);
+
+  /**
+    * Evaluates a win through a given row and increments win count for that player
+    * @param boardArray 2D array of tic tac toe board
+    * @param col which column is being evaluated
+    * @param player 'x' or 'o'
+    */
+ void EvaluateCol(int col, char player);
+
+  /**
+    * Evaluates a win in the left-right diagonal for given player, increments win count for that player
+    * @param boardArray 2D array of tic tac toe board
+    * @param player 'x' or 'o'
+    */
+ void EvaluateDiagonal(char player);
+
+  /**
+    * Evaluates a win in the right-left diagonal for given player, increments win count for that player
+    * @param boardArray 2D array of tic tac toe board
+    * @param player 'x' or 'o'
+    */
+ void EvaluateAntiDiagonal(char player);
+
+  /**
+    * Checks if a turn has been skipped
+    * @param boardArray 2D array of tic tac toe board
+    * @return True if a turn has been skipped, false if not
+    */
+ bool IsTurnSkipped();
+
+  /**
+    * Evaluates validity of string length, must be >= 9 and perfect square
+    * @param inputLength length of board string
+    * @return true if valid, false if invalid
+    */
+ bool IsValidLength(int inputLength);
+
 };
 
 }  // namespace tictactoe
