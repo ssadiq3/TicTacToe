@@ -41,11 +41,11 @@ class Board {
 
  private:
  std::vector< std::vector< char > > arrayBoard;
- int dimension;
- int pOneWins;
- int pTwoWins;
- char playerOne;
- char playerTwo;
+ int dimension_;
+ char player_one_;
+ char player_two_;
+ int one_wins_;
+ int two_wins_;
 
   /**
     * Evaluates a win through a given row and increments win count for that player
